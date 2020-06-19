@@ -1,0 +1,27 @@
+*** Note to Self ***
+
+For purpose of classification within the data we use sigmoid 
+Now our Sigmoid just calculates the probability in that case thus giving us the class
+most relevant to the answer. Example 
+For a -> dog,cat,mouse classifier we just get result as 
+[0.921,0.069,0.01] thus giving that the image is dog !!
+
+But what if we want to answer for multiple classes at the same time ? 
+i.e. Multi-Label Classification !
+if we want to predict like in fashion images the dress type + the colour in that case
+we don't use softmax as it will only give the classification i.e. the highest probability
+is selected as the class but we want the color to be classified as well in that case
+we use 'sigmoid' function instead of softmax now sigmoid gives individual probabilities
+thus the class having high probability will get it's predicted label as true Example
+For a fashion class as -> Black jeans ,Blue dress, Blue jeans (356 images) ,
+			  Blue shirt , Red dress, Red shirt
+so we get our labels as : 
+		Black, Blue, Red, Shirt, Jeans, dress
+Now the output layer has 6 nodes and with sigmoid as it's activation function
+so it will detect multiple objects at once thus as the network learns from ground 
+truth labels like : 
+                  [ 1,0,0,1,0,0] i.e. black shirt 
+it learns on other objects as well !!
+
+But...the loss function used will be binary_crossentropy as it is for each class.
+The model might also hurt performance if it is not big enough !! 
